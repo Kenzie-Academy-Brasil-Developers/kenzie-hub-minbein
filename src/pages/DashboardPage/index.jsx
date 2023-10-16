@@ -1,7 +1,34 @@
-const DashboardPage = () => {
+import { Header } from "../../components";
+import Button from "../../components/Button";
+import styles from "./styles.module.scss";
+
+const DashboardPage = ({ user, userLogout }) => {
   return (
     <>
-      <h1>Pagina de Dashboard</h1>;
+      <div className={styles.pageContainer}>
+        <Header>
+          <Button text="Sair" onClick={userLogout} />
+        </Header>
+
+        <main>
+          <div className={styles.titleUserContainer}>
+            <div className={styles.divUserContainer}>
+              <h2>Olá, {user?.name}</h2>
+              <p>{user?.course_module}</p>
+            </div>
+          </div>
+
+          <div className={styles.messageContainer}>
+            <div>
+              <h2>Que pena! Estamos em desenvolvimento :( </h2>
+              <p>
+                Nossa aplicação está em desenvolvimento, em breve teremos
+                novidades
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
     </>
   );
 };

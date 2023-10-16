@@ -1,11 +1,20 @@
-import Header from "../../components/Header";
+import { Header, LoginForm } from "../../components";
+import styles from "./styles.module.scss";
 
-const LoginPage = () => {
+const LoginPage = ({ setUser }) => {
   return (
     <>
-      <Header />
-      <main>
-      </main>
+      <div className={styles.pageContainer}>
+        <Header showButtons={false} />
+        <main>
+          <LoginForm
+            setUser={setUser}
+            buttonText1="Entrar"
+            to="/register"
+            buttonText2="Cadastrar"
+          />
+        </main>
+      </div>
     </>
   );
 };

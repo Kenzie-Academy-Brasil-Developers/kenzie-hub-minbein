@@ -1,0 +1,33 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--grey-3);
+  gap: 15px;
+
+  label {
+    background-color: var(--grey-3);
+    color: var(--grey-0);
+    font-family: var(--font-primary);
+    font-size: var(--headline);
+  }
+  input {
+    background-color: var(--grey-2);
+    font-size: var(--headline);
+
+    padding: 10px 10px;
+    border: 1px solid var(--grey-2);
+    border-radius: 3px;
+    color: var(--grey-0);
+
+    &::placeholder {
+      color: var(--grey-1);
+    }
+
+    &:focus {
+      border-color: var(--grey-0);
+      box-shadow: 0 0 2px rgba(255, 255, 255, 0.589);
+      outline: none;
+      caret-color: var(--grey-0);
+    }
+  }
+}

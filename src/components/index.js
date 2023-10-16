@@ -1,4 +1,6 @@
+import RegisterForm from "./forms/RegisterForm";
 import Header from "./Header";
-import Input from "./Input";
+import LoginForm from "./forms/LoginForm/index";
+import Button from "./Button";
 
-export {Header, Input}
+export { Header, RegisterForm, LoginForm, Button };

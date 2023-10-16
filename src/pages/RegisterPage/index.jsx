@@ -1,12 +1,21 @@
-import { Header, Input } from "../../components";
+import { Header, RegisterForm, Button } from "../../components";
+import styles from "./styles.module.scss";
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
   return (
     <>
-      <Header/>
-      <main>
-        <Input/>
-      </main>
+      <div className={styles.pageContainer}>
+        <Header>
+          <Link to={"/"}>
+            <Button text="Voltar" />
+          </Link>
+        </Header>
+
+        <main>
+          <RegisterForm buttonText="Cadastrar" />
+        </main>
+      </div>
     </>
   );
 };

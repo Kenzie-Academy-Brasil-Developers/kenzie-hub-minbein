@@ -1,0 +1,20 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  main {
+    .registerInput {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+@media (min-width: 500px) {
+  Header {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0px 30px 0px;
+    align-items: center;
+    gap: 160px;
+  }
+}

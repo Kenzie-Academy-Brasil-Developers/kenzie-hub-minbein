@@ -1,0 +1,19 @@
+.headerContainer {
+  display: flex;
+  margin: 15px 0px 15px 0px;
+  justify-content: space-between;
+}
+.headerWithoutButtons {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 500px) {
+  .headerContainer {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0px 30px 0px;
+    align-items: center;
+    gap: 160px;
+  }
+}

@@ -1,0 +1,32 @@
+.formContainer {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+
+  background-color: var(--grey-3);
+  padding-bottom: 30px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 20px;
+    background-color: var(--grey-3);
+  }
+  button {
+    width: 100%;
+    margin: 20px 0px 10px 0px;
+  }
+  P {
+    color: var(--grey-1);
+    font-family: Inter;
+    font-size: var(--headline);
+    font-weight: var(--headline-weight);
+    background-color: var(--grey-3);
+  }
+}
+@media (min-width: 500px) {
+  .formContainer {
+    max-width: 350px;
+  }
+}

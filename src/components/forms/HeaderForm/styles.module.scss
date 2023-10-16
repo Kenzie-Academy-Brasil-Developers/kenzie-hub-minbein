@@ -1,0 +1,26 @@
+.headerContainer {
+  background-color: var(--grey-3);
+  margin: 50px 0px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  h1 {
+    color: var(--grey-0);
+    font-family: Inter;
+    font-size: var(--title-2);
+
+    font-weight: var(--title2-weight);
+    background-color: var(--grey-3);
+  }
+  p {
+    color: var(--grey-1);
+    font-family: Inter;
+    font-size: var(--headline);
+
+    font-weight: var(--headline-weight);
+
+    background-color: var(--grey-3);
+  }
+}
