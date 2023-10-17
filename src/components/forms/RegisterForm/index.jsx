@@ -1,16 +1,10 @@
 import { useForm } from "react-hook-form";
-import Button from "../../Button";
-import Input from "../Input";
-import Select from "../Select";
-import { useRef, useState } from "react";
+import { Button, Input, Select, HeaderForm } from "../../index";
+import { useContext, useRef, useState } from "react";
 import styles from "./styles.module.scss";
-import HeaderForm from "../HeaderForm";
-import { api } from "../../../services/api";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import RegisterFormSchema from "./register.form.schema";
+import { UserContext } from "../../../providers/UserContext";
 
 const RegisterForm = () => {
   const {
@@ -24,27 +18,10 @@ const RegisterForm = () => {
   const moduleSelected = useRef;
 
   const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
-
-  const registerUser = async (payload) => {
-    try {
-      setLoading(true);
-      await api.post("/users", payload);
-
-      navigate("/");
-      toast.success("Cadastro realizado");
-    } catch (error) {
-      if (error.responde?.data === "Email already exists") {
-      }
-      toast.error("Usuário já cadastrado.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { registerUser } = useContext(UserContext);
 
   const submit = (payLoad) => {
-    registerUser(payLoad);
+    registerUser(payLoad, setLoading);
   };
 
   const moduleOptions = [
@@ -134,7 +111,7 @@ const RegisterForm = () => {
             disabled={loading}
             style="defaultpink"
             type="submit"
-            text="Enviar"
+            text="Cadastrar"
           />
         </form>
       </div>

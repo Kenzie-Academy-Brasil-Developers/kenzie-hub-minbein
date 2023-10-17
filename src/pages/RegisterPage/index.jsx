@@ -1,6 +1,6 @@
 import { Header, RegisterForm, Button } from "../../components";
-import styles from "./styles.module.scss";
 import { Link } from "react-router-dom";
+import styles from "./styles.module.scss";
 
 const RegisterPage = () => {
   return (
@@ -13,7 +13,7 @@ const RegisterPage = () => {
         </Header>
 
         <main>
-          <RegisterForm buttonText="Cadastrar" />
+          <RegisterForm />
         </main>
       </div>
     </>

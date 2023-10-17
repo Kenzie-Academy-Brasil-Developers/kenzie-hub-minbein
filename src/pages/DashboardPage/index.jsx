@@ -1,13 +1,16 @@
-import { Header } from "../../components";
-import Button from "../../components/Button";
+import { Header, Button } from "../../components";
+import { UserContext } from "../../providers/UserContext";
 import styles from "./styles.module.scss";
+import { useContext } from "react";
 
-const DashboardPage = ({ user, userLogout }) => {
+const DashboardPage = () => {
+  const { user, userLogout } = useContext(UserContext);
+
   return (
     <>
       <div className={styles.pageContainer}>
         <Header>
-          <Button text="Sair" onClick={userLogout} />
+          <Button onClick={userLogout} text="Sair" />
         </Header>
         <main>
           <div className={styles.borderContainer}></div>

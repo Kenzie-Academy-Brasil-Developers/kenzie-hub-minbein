@@ -1,17 +1,13 @@
 import { useForm } from "react-hook-form";
-import Button from "../../Button";
-import Input from "../Input";
+import { Button, Input, HeaderForm } from "../../index";
 import styles from "./styles.module.scss";
-import HeaderForm from "../HeaderForm";
-import { Link, useNavigate } from "react-router-dom";
-import { api } from "../../../services/api";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoginFormSchema from "./login.form.schema";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useContext, useState } from "react";
+import { UserContext } from "../../../providers/UserContext";
 
-const LoginForm = ({ to, buttonText1, buttonText2, setUser }) => {
+const LoginForm = () => {
   const {
     register,
     handleSubmit,
@@ -20,35 +16,12 @@ const LoginForm = ({ to, buttonText1, buttonText2, setUser }) => {
     resolver: zodResolver(LoginFormSchema),
   });
 
-  const [loading, setloading] = useState(false);
+  const { userLogin } = useContext(UserContext);
 
-  const navigate = useNavigate();
-
-  const userLogin = async (payload) => {
-    try {
-      setloading(true);
-
-      const { data } = await api.post("/sessions", payload);
-
-      localStorage.setItem("@TOKEN", data.acessToken);
-      setUser(data.user);
-
-      navigate("/dashboard");
-      toast.success("Login bem-sucedido");
-    } catch (error) {
-      if (
-        error.response?.data?.message ===
-        "Incorrect email / password combination"
-      ) {
-        toast.error("Credenciais invalidas");
-      }
-    } finally {
-      setloading(false);
-    }
-  };
+  const [loading, setLoading] = useState(false);
 
   const submit = (payLoad) => {
-    userLogin(payLoad);
+    userLogin(payLoad, setLoading);
   };
 
   return (
@@ -74,10 +47,10 @@ const LoginForm = ({ to, buttonText1, buttonText2, setUser }) => {
             {...register("password")}
           />
 
-          <Button style="pink" type="submit" text={buttonText1} />
+          <Button style="pink" type="submit" text="Entrar" disabled={loading} />
           <span>Ainda não possui uma conta?</span>
-          <Link to={to}>
-            <Button style="biggrey" disabled={loading} text={buttonText2} />
+          <Link to="/register">
+            <Button style="biggrey" text="Cadastre-se" />
           </Link>
         </form>
       </div>
