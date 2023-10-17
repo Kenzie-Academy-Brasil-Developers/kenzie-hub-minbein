@@ -9,24 +9,25 @@ const DashboardPage = ({ user, userLogout }) => {
         <Header>
           <Button text="Sair" onClick={userLogout} />
         </Header>
-
         <main>
-          <div className={styles.titleUserContainer}>
+          <div className={styles.borderContainer}></div>
+          <section className={styles.sectionContainer}>
             <div className={styles.divUserContainer}>
               <h2>Olá, {user?.name}</h2>
+
               <p>{user?.course_module}</p>
             </div>
-          </div>
-
-          <div className={styles.messageContainer}>
-            <div>
+          </section>
+          <div className={styles.borderContainer}></div>
+          <section className={styles.sectionContainer}>
+            <div className={styles.messageContainer}>
               <h2>Que pena! Estamos em desenvolvimento :( </h2>
               <p>
                 Nossa aplicação está em desenvolvimento, em breve teremos
                 novidades
               </p>
             </div>
-          </div>
+          </section>
         </main>
       </div>
     </>

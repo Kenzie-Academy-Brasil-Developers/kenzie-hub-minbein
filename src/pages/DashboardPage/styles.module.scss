@@ -1,77 +1,62 @@
 .pageContainer {
-  color: var(--grey-0);
-  Header {
-    margin: 15px;
-  }
-
-  main {
+  max-width: 80%;
+  margin: auto;
+}
+.sectionContainer {
+  color: white;
+  .divUserContainer {
+    padding: 20px 0px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-
-    .titleUserContainer {
-      border-top: 1px solid var(--grey-3);
-      border-bottom: 1px solid var(--grey-3);
-      padding: 30px 0px 30px 0px;
-
-      div {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        h2 {
-          color: var(--grey-0);
-          font-size: var(--title1);
-          font-weight: 700;
-        }
-
-        p {
-          color: var(--grey-1);
-          font-size: var(--headline);
-        }
-
-        margin: 15px;
-      }
+    gap: 20px;
+    margin: 0px 15px;
+    h2 {
+      color: var(--grey-0);
+      font-size: var(--title1);
+      font-weight: 700;
     }
-    .messageContainer {
-      margin: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      h2 {
-        color: var(--grey-0);
 
-        font-size: var(--title1);
+    p {
+      color: var(--grey-1);
+      font-size: var(--headline);
+    }
+  }
+  .messageContainer {
+    margin: 15px;
 
-        font-weight: 700;
-      }
-      p {
-        color: var(--grey-0);
-        font-size: var(--paragraph);
-        font-weight: 400;
-      }
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+    h2 {
+      color: var(--grey-0);
+      font-size: var(--title1);
+      font-weight: 700;
+    }
+
+    p {
+      color: var(--grey-1);
+      font-size: var(--headline);
     }
   }
 }
-@media (min-width: 500px) {
+@media (min-width: 1020px) {
   .pageContainer {
-    Header {
-      display: flex;
-      justify-content: space-around;
+    .borderContainer {
+      border-bottom: 1px solid var(--grey-2);
+      width: 100%;
+      position: absolute;
+      left: 0;
     }
-    .titleUserContainer {
+    .sectionContainer {
       .divUserContainer {
+        padding: 20px 0px;
         display: flex;
         flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
+        gap: 20px;
+        margin: 0px 15px;
+        justify-content: space-between;
       }
-    }
-    .messageContainer {
-      margin: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
     }
   }
 }
