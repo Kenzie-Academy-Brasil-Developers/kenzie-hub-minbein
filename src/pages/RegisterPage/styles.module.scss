@@ -4,10 +4,9 @@
   margin: 20px;
   Header {
     display: flex;
-    justify-content: center;
-    margin: 35px 0px 30px 0px;
+    justify-content: space-between;
+    margin: 35px 0 30px;
     align-items: center;
-    gap: 160px;
   }
   main {
     .registerInput {
@@ -19,9 +18,10 @@
 @media (min-width: 500px) {
   Header {
     display: flex;
-    justify-content: center;
+    justify-content: center !important;
     margin: 35px 0px 30px 0px;
     align-items: center;
     gap: 160px;
   }
 }
+
