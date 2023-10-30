@@ -1,10 +1,18 @@
-import { Header, Button } from "../../components";
+import { useContext } from "react";
+import {
+  Header,
+  Button,
+  TechList,
+  EditModal,
+  CreateModal,
+} from "../../components";
+import { TechContext } from "../../providers/TechContext";
 import { UserContext } from "../../providers/UserContext";
 import styles from "./styles.module.scss";
-import { useContext } from "react";
 
 const DashboardPage = () => {
   const { user, userLogout } = useContext(UserContext);
+  const { isModalOpen, isEditModalOpen } = useContext(TechContext);
 
   return (
     <>
@@ -17,23 +25,19 @@ const DashboardPage = () => {
           <section className={styles.sectionContainer}>
             <div className={styles.divUserContainer}>
               <h2>Olá, {user?.name}</h2>
-
               <p>{user?.course_module}</p>
             </div>
           </section>
           <div className={styles.borderContainer}></div>
           <section className={styles.sectionContainer}>
-            <div className={styles.messageContainer}>
-              <h2>Que pena! Estamos em desenvolvimento :( </h2>
-              <p>
-                Nossa aplicação está em desenvolvimento, em breve teremos
-                novidades
-              </p>
-            </div>
+            <TechList />
           </section>
+          {isModalOpen && <CreateModal />}
+          {isEditModalOpen && <EditModal />}
         </main>
       </div>
     </>
   );
 };
+
 export default DashboardPage;

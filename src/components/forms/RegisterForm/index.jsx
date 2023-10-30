@@ -100,6 +100,7 @@ const RegisterForm = () => {
 
           <div>
             <Select
+              label="Selecione o modulo"
               error={errors.course_module}
               name="course_module"
               options={moduleOptions}

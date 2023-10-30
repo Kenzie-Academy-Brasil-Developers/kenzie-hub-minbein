@@ -5,10 +5,12 @@ const LoginPage = () => {
   return (
     <>
       <div className={styles.pageContainer}>
-        <Header showButtons={false} />
-        <main>
-          <LoginForm />
-        </main>
+        <div className={styles.yContainer}>
+          <Header style="headerWithoutButtons" />
+          <main>
+            <LoginForm />
+          </main>
+        </div>
       </div>
     </>
   );

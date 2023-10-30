@@ -7,15 +7,19 @@ const UserContext = createContext({});
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
+  const [userTechnologies, setUserTechnologies] = useState([]);
   const navigate = useNavigate();
+
+  const updateUserTechnologies = (newTechnologies) => {
+    setUserTechnologies(newTechnologies);
+  };
 
   const loadUser = async () => {
     const token = localStorage.getItem("@TOKEN");
 
     if (!token) {
-      userLogout(false);
-      return false;
+      userLogout();
+      return;
     }
 
     try {
@@ -26,6 +30,8 @@ const UserProvider = ({ children }) => {
       });
 
       setUser(data);
+
+      setUserTechnologies(data.techs);
     } catch (error) {
       userLogout();
     }
@@ -35,14 +41,10 @@ const UserProvider = ({ children }) => {
     loadUser();
   }, []);
 
-  const userLogout = (showToast = true) => {
+  const userLogout = () => {
     setUser(null);
+    setUserTechnologies([]);
     localStorage.removeItem("@TOKEN");
-
-    if (showToast) {
-      toast.success("Você deslogou da sua conta");
-    }
-
     navigate("/");
   };
 
@@ -55,6 +57,8 @@ const UserProvider = ({ children }) => {
       localStorage.setItem("@TOKEN", data.token);
       setUser(data.user);
 
+      setUserTechnologies(data.user.techs);
+
       navigate("/dashboard");
       toast.success("Login bem-sucedido");
     } catch (error) {
@@ -62,30 +66,40 @@ const UserProvider = ({ children }) => {
         error.response?.data?.message ===
         "Incorrect email / password combination"
       ) {
-        toast.error("Credenciais invalidas");
+        toast.error("Credenciais inválidas");
       }
     } finally {
       setloading(false);
     }
   };
+
   const registerUser = async (payload, setLoading) => {
     try {
       setLoading(true);
       await api.post("/users", payload);
 
       navigate("/");
-      toast.success("Cadastro realizado");
+      toast.success("Cadastro realizado com sucesso");
     } catch (error) {
-      if (error.responde?.data === "Email already exists") {
+      if (error.response?.data === "Email already exists") {
+        toast.error("E-mail já cadastrado.");
       }
-      toast.error("Usuário já cadastrado.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <UserContext.Provider value={{ user, userLogin, userLogout, registerUser }}>
+    <UserContext.Provider
+      value={{
+        user,
+        userTechnologies,
+        userLogin,
+        userLogout,
+        registerUser,
+        updateUserTechnologies,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

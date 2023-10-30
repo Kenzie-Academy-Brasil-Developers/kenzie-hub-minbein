@@ -8,7 +8,9 @@ const Button = ({ style, text, ...rest }) => {
       ? styles.defaultpink
       : style === "biggrey"
       ? styles.biggrey
-      : styles.button;
+      : style === "icon"
+      ? styles.icon
+      : styles.default;
 
   return (
     <>

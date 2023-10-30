@@ -45,7 +45,7 @@
     border: 1px solid var(--grey-2);
   }
 }
-button {
+.default {
   border: 1px solid var(--grey-3);
   border-radius: 4px;
   background: var(--grey-3);
@@ -59,4 +59,7 @@ button {
     background: var(--grey-2);
     border: 1px solid var(--grey-2);
   }
+}
+.icon {
+  font-size: 50px;
 }

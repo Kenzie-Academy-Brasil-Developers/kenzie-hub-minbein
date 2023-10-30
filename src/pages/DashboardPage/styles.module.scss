@@ -1,6 +1,13 @@
 .pageContainer {
-  max-width: 80%;
+  max-width: 90%;
+
   margin: auto;
+  .borderContainer {
+    border-bottom: 1px solid var(--grey-2);
+    width: 100%;
+    position: absolute;
+    left: 0;
+  }
 }
 .sectionContainer {
   color: white;
@@ -9,7 +16,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin: 0px 15px;
     h2 {
       color: var(--grey-0);
       font-size: var(--title1);
@@ -42,6 +48,8 @@
 }
 @media (min-width: 1020px) {
   .pageContainer {
+    max-width: 80%;
+    margin: auto;
     .borderContainer {
       border-bottom: 1px solid var(--grey-2);
       width: 100%;
@@ -54,7 +62,6 @@
         display: flex;
         flex-direction: row;
         gap: 20px;
-        margin: 0px 15px;
         justify-content: space-between;
       }
     }

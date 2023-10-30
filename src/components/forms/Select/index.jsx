@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 import styles from "./styles.module.scss";
 
-const Select = forwardRef(({ error, name, options, register }, ref) => {
+const Select = forwardRef(({ label, error, name, options, register, defaultValue }, ref) => {
   return (
     <div className={styles.inputContainer}>
-      <label htmlFor={name}>Selecionar módulo</label>
+      <label htmlFor={name}>{label}</label>
       <select ref={ref} {...register(name)}>
         {options.map((option, index) => (
           <option key={index} value={option}>

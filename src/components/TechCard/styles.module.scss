@@ -1,0 +1,41 @@
+.itemContainer {
+  display: flex;
+  background-color: var(--grey-4);
+  margin: 10px 10px 10px 10px;
+  border-radius: 5px;
+  padding: 20px;
+  justify-content: space-between;
+  .techContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    h2 {
+      color: var(--grey-0);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    span {
+      color: var(--grey-1);
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+
+    button {
+      border: none;
+      padding: 0px;
+      background-color: var(--grey-4);
+      svg {
+        font-size: 20px;
+        font-weight: bold;
+        background-color: var(--grey-4);
+        color: var(--grey-0);
+        height: 20px;
+      }
+    }
+  }
+}

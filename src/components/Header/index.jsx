@@ -9,8 +9,10 @@ const Header = ({ children }) => {
           children ? styles.headerContainer : styles.headerWithoutButtons
         }
       >
-        <img src={logo} alt="Logo Kenzie Hub" />
-        {children}
+        <div className={styles.logoContainer}>
+          <img src={logo} alt="Logo Kenzie Hub" />
+          {children}
+        </div>
       </header>
     </>
   );
