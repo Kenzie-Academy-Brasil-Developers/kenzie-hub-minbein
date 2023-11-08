@@ -6,13 +6,32 @@ import { showSuccessToast, showErrorToast } from "../components/Toast";
 const TechContext = createContext({});
 
 const TechProvider = ({ children }) => {
-  const { userTechnologies, updateUserTechnologies } = useContext(UserContext);
+  const { userTechnologies, updateUserTechnologies, loadUser } =
+    useContext(UserContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const [editingTech, setEditingTech] = useState(null);
+
+  const updateTechnology = async (techId, newData) => {
+    try {
+      const token = localStorage.getItem("@TOKEN");
+
+      await api.put(`/users/techs/${techId}`, newData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setEditingTech({ ...editingTech, ...newData });
+
+      loadUser();
+    } catch (error) {
+      console.error("Erro ao atualizar a tecnologia:", error);
+    }
+  };
 
   const openEditModal = (tech) => {
     setEditingTech(tech);
@@ -38,7 +57,6 @@ const TechProvider = ({ children }) => {
     };
 
     try {
-      const token = localStorage.getItem("@TOKEN");
       const response = await api.post("/users/techs", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -83,6 +101,7 @@ const TechProvider = ({ children }) => {
   return (
     <TechContext.Provider
       value={{
+        updateTechnology,
         openEditModal,
         deleteTechnology,
         createTechnology,
@@ -91,6 +110,7 @@ const TechProvider = ({ children }) => {
         closeModal,
         closeEditModal,
         isEditModalOpen,
+        editingTech,
       }}
     >
       {children}

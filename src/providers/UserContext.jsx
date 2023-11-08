@@ -98,6 +98,7 @@ const UserProvider = ({ children }) => {
         userLogout,
         registerUser,
         updateUserTechnologies,
+        loadUser,
       }}
     >
       {children}

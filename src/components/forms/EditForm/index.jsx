@@ -2,20 +2,24 @@ import { useForm } from "react-hook-form";
 import Input from "../Input";
 import styles from "./styles.module.scss";
 import Button from "./../../Button/index";
+import { toast } from "react-toastify";
 
-const EditForm = ({ onFormSubmit, tech }) => {
+const EditForm = ({ tech, onSubmit }) => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = async (data) => {
-    onFormSubmit(data);
+
+  const handleFormSubmit = (data) => {
+    onSubmit(tech.id, data);
+
+    toast.success("O status da tecnologia foi atualizado com sucesso");
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Input
-        defaultValue={tech.title}
         label="Nome do projeto"
         type="text"
         {...register("title")}
+        defaultValue={tech.title}
       />
       <div className={styles.inputContainer}>
         <label>Selecionar status</label>
@@ -31,7 +35,7 @@ const EditForm = ({ onFormSubmit, tech }) => {
         </select>
       </div>
 
-      <Button text="Salvar alterações " style="pink" type="submit" />
+      <Button text="Salvar alterações" style="pink" type="submit" />
     </form>
   );
 };

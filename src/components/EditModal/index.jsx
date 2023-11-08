@@ -4,7 +4,9 @@ import EditForm from "../forms/EditForm";
 import styles from "../CreateModal/styles.module.scss";
 
 const EditModal = () => {
-  const { isEditModalOpen, closeEditModal } = useContext(TechContext);
+  const { isEditModalOpen, closeEditModal, editingTech, updateTechnology } =
+    useContext(TechContext);
+
   return (
     <>
       {isEditModalOpen && (
@@ -15,7 +17,7 @@ const EditModal = () => {
               <button onClick={closeEditModal}>X</button>
             </div>
 
-            <EditForm></EditForm>
+            <EditForm tech={editingTech} onSubmit={updateTechnology} />
           </div>
         </div>
       )}
