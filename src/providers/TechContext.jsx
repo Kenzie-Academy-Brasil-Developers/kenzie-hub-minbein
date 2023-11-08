@@ -57,6 +57,7 @@ const TechProvider = ({ children }) => {
     };
 
     try {
+      const token = localStorage.getItem("@TOKEN");
       const response = await api.post("/users/techs", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
